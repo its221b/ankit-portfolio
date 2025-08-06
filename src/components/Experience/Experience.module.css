@@ -1,0 +1,588 @@
+@import "../../vars.css";
+
+.container {
+  color: var(--color-text);
+  margin-top: clamp(40px, 8vw, 79px);
+  margin-left: clamp(5%, 10vw, 10%);
+  margin-right: clamp(5%, 10vw, 10%);
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: auto;
+  padding-bottom: clamp(60px, 10vw, 120px);
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: clamp(24px, 4vw, 35px);
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: clamp(20px, 4vw, 40px);
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: clamp(20px, 4vw, 40px);
+  margin-top: clamp(14px, 3vw, 28px);
+  min-height: 0;
+  overflow: visible;
+}
+
+.skills {
+  width: 45%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 37px);
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 0;
+  overflow: visible;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 11px);
+  text-align: center;
+  min-width: 100px;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.skill:hover {
+  transform: translateY(-4px);
+}
+
+.skillImageContainer {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #132a53 50%, #0b2447 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(80px, 12vw, 120px);
+  height: clamp(80px, 12vw, 120px);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  animation: skillFloat 3s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+.skill:nth-child(1) .skillImageContainer { animation-delay: 0s; }
+.skill:nth-child(2) .skillImageContainer { animation-delay: 0.2s; }
+.skill:nth-child(3) .skillImageContainer { animation-delay: 0.4s; }
+.skill:nth-child(4) .skillImageContainer { animation-delay: 0.6s; }
+.skill:nth-child(5) .skillImageContainer { animation-delay: 0.8s; }
+.skill:nth-child(6) .skillImageContainer { animation-delay: 1s; }
+
+@keyframes skillFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.skillImageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.skillImageContainer:hover::before {
+  left: 100%;
+}
+
+.skillImageContainer:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: none;
+}
+
+.skillImageContainer:active {
+  transform: scale(1.05) translateY(-1px);
+  transition: all 0.1s ease;
+}
+
+.skillImageContainer img {
+  width: clamp(50px, 8vw, 75px);
+  height: clamp(50px, 8vw, 75px);
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(1.1) contrast(1.1);
+  will-change: transform, filter;
+  z-index: 1;
+  position: relative;
+}
+
+.skillImageContainer:hover img {
+  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.3) contrast(1.2);
+  animation: skillIconPulse 0.8s ease;
+}
+
+@keyframes skillIconPulse {
+  0% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.4) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+.skill p {
+  font-size: clamp(14px, 2.5vw, 25px);
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.2;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.8;
+}
+
+.skill:hover p {
+  opacity: 1;
+  transform: translateY(-2px);
+  color: var(--color-text);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.history {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 4vw, 40px);
+  min-height: 0;
+  overflow: visible;
+}
+
+.accordionItem {
+  background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: 1px solid var(--color-secondary);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.accordionItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.accordionHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(12px, 2vw, 17px);
+  padding: clamp(16px, 3vw, 24px);
+  position: relative;
+  min-height: 80px;
+  flex-shrink: 0;
+}
+
+.accordionHeader:focus {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+.accordionHeader:hover {
+  opacity: 0.9;
+}
+
+.historyImageContainer {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, #132a53 50%, #0b2447 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(60px, 10vw, 120px);
+  height: clamp(60px, 10vw, 120px);
+  flex-shrink: 0;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+}
+
+.historyImageContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.historyImageContainer:hover::before {
+  left: 100%;
+}
+
+.historyImageContainer:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.historyImageContainer img {
+  width: clamp(40px, 6vw, 75px);
+  height: clamp(40px, 6vw, 75px);
+  object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(1.1) contrast(1.1);
+  will-change: transform, filter;
+  z-index: 1;
+  position: relative;
+}
+
+.historyImageContainer:hover img {
+  transform: scale(1.2) rotate(5deg);
+  filter: brightness(1.3) contrast(1.2);
+  animation: historyIconPulse 0.8s ease;
+}
+
+@keyframes historyIconPulse {
+  0% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.4) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+.historyItemDetails {
+  font-family: var(--font-roboto);
+  flex: 1;
+  min-width: 0;
+}
+
+.historyItemDetails h3 {
+  font-size: clamp(16px, 3vw, 30px);
+  font-weight: 500;
+  margin: 0 0 clamp(4px, 1vw, 8px) 0;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.historyItemDetails p {
+  font-size: clamp(14px, 2.5vw, 20px);
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.accordionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
+  flex-shrink: 0;
+}
+
+.iconOpen,
+.iconClosed {
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.iconOpen {
+  transform: rotate(0deg);
+}
+
+.iconClosed {
+  transform: rotate(0deg);
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+              padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 clamp(16px, 3vw, 24px);
+  opacity: 0;
+}
+
+.accordionContent.open {
+  max-height: 1000px;
+  padding-bottom: clamp(16px, 3vw, 24px);
+  opacity: 1;
+}
+
+.accordionContent ul {
+  margin: clamp(6px, 1.5vw, 12px) 0 0 0;
+  list-style-position: outside;
+  font-size: clamp(14px, 2.5vw, 25px);
+  list-style-type: disc;
+  padding-left: clamp(16px, 3vw, 24px);
+  line-height: 1.6;
+}
+
+.accordionContent li {
+  margin-bottom: clamp(8px, 1.5vw, 12px);
+  text-align: justify;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .content {
+    gap: clamp(30px, 5vw, 50px);
+  }
+  
+  .skills {
+    width: 48%;
+  }
+  
+  .history {
+    width: 48%;
+  }
+  
+  .skillImageContainer {
+    width: clamp(70px, 10vw, 100px);
+    height: clamp(70px, 10vw, 100px);
+  }
+  
+  .skillImageContainer img {
+    width: clamp(45px, 7vw, 60px);
+    height: clamp(45px, 7vw, 60px);
+  }
+}
+
+@media screen and (max-width: 830px) {
+  .container {
+    min-height: auto;
+    padding-bottom: clamp(80px, 12vw, 120px);
+    margin-top: clamp(30px, 6vw, 60px);
+  }
+  
+  .content {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(30px, 6vw, 50px);
+    min-height: auto;
+    margin-top: clamp(20px, 4vw, 30px);
+  }
+
+  .skills {
+    width: 100%;
+    max-width: 600px;
+    justify-content: center;
+    min-height: auto;
+    padding: 0 clamp(10px, 3vw, 20px);
+  }
+
+  .history {
+    width: 100%;
+    max-width: 600px;
+    gap: clamp(15px, 3vw, 25px);
+    min-height: auto;
+    padding: 0 clamp(10px, 3vw, 20px);
+  }
+  
+  .accordionHeader {
+    flex-wrap: wrap;
+    gap: clamp(10px, 2vw, 15px);
+  }
+  
+  .historyItemDetails h3 {
+    font-size: clamp(18px, 4vw, 24px);
+  }
+  
+  .historyItemDetails p {
+    font-size: clamp(16px, 3vw, 18px);
+  }
+  
+  .skillImageContainer {
+    width: clamp(65px, 12vw, 90px);
+    height: clamp(65px, 12vw, 90px);
+  }
+  
+  .skillImageContainer img {
+    width: clamp(40px, 8vw, 55px);
+    height: clamp(40px, 8vw, 55px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin-left: clamp(10px, 3vw, 20px);
+    margin-right: clamp(10px, 3vw, 20px);
+    padding-bottom: clamp(60px, 10vw, 100px);
+    min-height: auto;
+    margin-top: clamp(20px, 4vw, 40px);
+  }
+  
+  .content {
+    gap: clamp(20px, 5vw, 40px);
+    margin-top: clamp(15px, 3vw, 25px);
+  }
+  
+  .accordionHeader {
+    padding: clamp(12px, 4vw, 16px);
+    min-height: 60px;
+  }
+  
+  .historyImageContainer {
+    width: clamp(50px, 12vw, 80px);
+    height: clamp(50px, 12vw, 80px);
+  }
+  
+  .historyImageContainer img {
+    width: clamp(30px, 8vw, 50px);
+    height: clamp(30px, 8vw, 50px);
+  }
+  
+  .accordionContent ul {
+    font-size: clamp(13px, 3.5vw, 18px);
+    padding-left: clamp(12px, 4vw, 16px);
+  }
+  
+  .skillImageContainer {
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(60px, 15vw, 80px);
+  }
+  
+  .skillImageContainer img {
+    width: clamp(35px, 10vw, 45px);
+    height: clamp(35px, 10vw, 45px);
+  }
+  
+  .skill p {
+    font-size: clamp(12px, 3vw, 16px);
+  }
+  
+  .accordionContent.open {
+    max-height: 1200px;
+  }
+  
+  .skills {
+    padding: 0 clamp(5px, 2vw, 15px);
+  }
+  
+  .history {
+    padding: 0 clamp(5px, 2vw, 15px);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .skillImageContainer {
+    width: clamp(55px, 18vw, 70px);
+    height: clamp(55px, 18vw, 70px);
+  }
+  
+  .skillImageContainer img {
+    width: clamp(30px, 12vw, 40px);
+    height: clamp(30px, 12vw, 40px);
+  }
+  
+  .skill p {
+    font-size: clamp(11px, 3.5vw, 14px);
+  }
+  
+  .historyImageContainer {
+    width: clamp(45px, 15vw, 70px);
+    height: clamp(45px, 15vw, 70px);
+  }
+  
+  .historyImageContainer img {
+    width: clamp(25px, 10vw, 45px);
+    height: clamp(25px, 10vw, 45px);
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .skillImageContainer,
+  .historyImageContainer {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .skillImageContainer img,
+  .historyImageContainer img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .accordionItem,
+  .skillImageContainer,
+  .historyImageContainer,
+  .accordionContent,
+  .iconOpen,
+  .iconClosed,
+  .skill,
+  .skillImageContainer img,
+  .historyImageContainer img,
+  .skill p {
+    transition: none;
+    animation: none;
+  }
+  
+  .accordionItem:hover {
+    transform: none;
+  }
+  
+  .skillImageContainer:hover,
+  .historyImageContainer:hover {
+    transform: none;
+  }
+  
+  .skillImageContainer:hover img,
+  .historyImageContainer:hover img {
+    transform: none;
+    filter: none;
+  }
+  
+  .skill:hover {
+    transform: none;
+  }
+  
+  .skill:hover p {
+    transform: none;
+    opacity: 1;
+  }
+}

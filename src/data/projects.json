@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Real Better",
+    "imageSrc": "projects/realbetter.png",
+    "description": [
+      "Built modular, reusable UI components and integrated real-time chat with PubNub, improving engagement and reducing load time by 30%.",
+      "Applied performance techniques like lazy loading, useMemo, and useCallback to optimize rendering and memory usage."
+    ],
+    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "demo": "https://realbetter.com/",
+    "playstorelink": "https://play.google.com/store/apps/details?id=com.presideatech.realbetter",
+    "appstorelink": "https://apps.apple.com/in/app/realbetter/id6477820282"
+  },
+  {
+    "title": "The Zaky",
+    "imageSrc": "projects/thezaky.png",
+    "description": [
+      "Upgraded React Native version (0.59 → 0.66), resolved critical UI/UX bugs, and integrated multi-language support (EN/FR/ES) using react-i18n.",
+      "Published app on both Play Store & App Store with optimized state management and API handling for smooth user experience."
+    ],
+    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "demo": "https://thezaky.com/",
+    "playstorelink": "https://play.google.com/store/apps/details?id=com.thezaky&hl=en_IN",
+    "appstorelink": "https://apps.apple.com/in/app/the-zaky-birth-3yr-tracker/id1512215757"
+  },
+  {
+    "title": "Jigya",
+    "imageSrc": "projects/jigya.png",
+    "description": [
+      "Developed infinite scrolling using Intersection Observer and virtual rendering to reduce server calls by 20%.",
+      "Delivered bug-free UI enhancements under tight deadlines, ensuring responsive and accessible design. "
+    ],
+    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "demo": "https://jigya.co.in/"
+  }
+]

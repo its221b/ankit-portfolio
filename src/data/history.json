@@ -1,0 +1,18 @@
+[
+    {
+      "role": "Software Engineer",
+      "organisation": "Navug InfoSolutions Pvt Ltd",
+      "startDate": "July, 2021",
+      "endDate": "Nov, 2024",
+      "experiences": ["Developed and deployed 4+ production-grade apps across web and mobile using React.js and React Native.", "Boosted app performance by 30% by optimizing component rendering, implementing code splitting, and lazy loading strategies.", "Architected a Redux-based state management solution, decreasing unnecessary component re-renders by 60% and improving front-end development velocity by an average of 25% across the team.", "Integrated RESTful APIs with frontend components by collaborating with backend and design teams, and developed reusable UI modules to standardize application architecture.", "Introduced unit and integration testing pipelines via Jest and React Testing Library, improving code coverage by 45%."],
+      "imageSrc": "history/navyug.png"
+    },
+    {
+      "role": "Senior App Developer",
+      "organisation": "Truwix Tech Solution Pvt Ltd",
+      "startDate": "Jan, 2025",
+      "endDate": "Mar, 2025",
+      "experiences": ["Developed modular mobile components using React Native, improving code reusability and maintainability.", "Implemented CI/CD pipelines with GitHub Actions to deliver production-ready features and reduce app bundle size.", "Performed performance profiling using React DevTools to identify bottlenecks and fix memory leaks in production builds."],
+      "imageSrc": "history/truwix.png"
+    }
+  ]

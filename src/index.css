@@ -4,3 +4,36 @@
   padding: 0;
   font-family: "Outfit",Arial, Helvetica, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure sections are properly spaced and visible */
+section {
+  scroll-margin-top: 80px;
+  min-height: auto;
+  overflow: visible;
+}
+
+/* Fix for mobile viewport issues */
+@media screen and (max-width: 480px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
