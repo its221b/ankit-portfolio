@@ -4,6 +4,10 @@ export const getImageUrl = (path) => {
         return '';
     }
     
-    // Use consistent path for both development and production
-    return `/assets/${path}`;
+    // Remove any leading slashes to ensure consistent path handling
+    const cleanPath = path.replace(/^\/+/, '');
+    
+    // In Vite, files in public/assets/ are served from /assets/
+    // For GitHub Pages, we need to include the repo name in the path
+    return `./public/assets/${cleanPath}`;
 }
