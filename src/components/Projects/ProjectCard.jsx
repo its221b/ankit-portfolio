@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useRef, useEffect } from "react";
 import styles from "./ProjectCard.module.css";
 import { getImageUrl } from "../../utils";
 
@@ -14,6 +14,9 @@ export const ProjectCard = React.memo(({ project }) => {
     appstorelink
   } = project;
 
+  const cardRef = useRef(null);
+  const isHovered = useRef(false);
+
   // Memoize skills to prevent unnecessary re-renders
   const memoizedSkills = useMemo(() => skills, [skills]);
 
@@ -27,8 +30,41 @@ export const ProjectCard = React.memo(({ project }) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   }, [title]);
 
+  // Handle mouse enter with smooth scroll
+  const handleMouseEnter = useCallback(() => {
+    isHovered.current = true;
+    
+    // Delay the scroll to allow the expansion animation to start
+    setTimeout(() => {
+      if (isHovered.current && cardRef.current) {
+        cardRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest'
+        });
+      }
+    }, 300); // Wait for expansion to start
+  }, []);
+
+  // Handle mouse leave
+  const handleMouseLeave = useCallback(() => {
+    isHovered.current = false;
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      isHovered.current = false;
+    };
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div 
+      className={styles.container}
+      ref={cardRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className={styles.imageContainer}>
         <img
           src={getImageUrl(imageSrc)}
