@@ -1,12 +1,78 @@
-# React + Vite
+# Ankit Soni - Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website built with React and Vite, showcasing skills, experience, and projects.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🚀 **High Performance**: Optimized with React.memo, useMemo, and useCallback
+- 📱 **Responsive Design**: Mobile-first approach with modern CSS
+- ♿ **Accessibility**: ARIA labels, keyboard navigation, semantic HTML
+- 🎨 **Modern UI**: Gradient effects, animations, and glassmorphism
+- 🔧 **Error Handling**: Error boundaries and proper error states
+- 📦 **Production Ready**: Optimized build configuration
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React 19** - Latest React with modern hooks
+- **Vite** - Fast build tool and dev server
+- **CSS Modules** - Scoped styling
+- **ESLint** - Code quality and consistency
+
+## Getting Started
+
+### Development
+
+```bash
+npm install
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Asset Management
+
+Images are stored directly in the `public/assets/` folder and served as static assets. The `getImageUrl()` utility provides consistent path handling.
+
+### File Structure
+
+```
+src/
+├── components/     # React components
+├── data/          # JSON data files
+├── utils.js       # Utility functions
+└── ...
+
+public/
+└── assets/        # Static images (skills, projects, etc.)
+```
+
+## Performance Optimizations
+
+- ✅ React.memo for component memoization
+- ✅ useMemo for expensive calculations
+- ✅ useCallback for event handlers
+- ✅ Lazy loading for images
+- ✅ Code splitting with Vite
+- ✅ Optimized bundle size
+
+## Accessibility Features
+
+- ✅ Semantic HTML structure
+- ✅ ARIA labels and roles
+- ✅ Keyboard navigation
+- ✅ Screen reader support
+- ✅ High contrast mode support
+- ✅ Reduced motion support
+
+## Build Configuration
+
+The project uses Vite with optimized settings for:
+- CSS Modules with camelCase
+- Manual chunk splitting
+- Asset optimization
+- Production-ready configuration
