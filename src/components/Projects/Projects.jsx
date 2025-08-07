@@ -11,7 +11,10 @@ export const Projects = () => {
 
   return (
     <section className={styles.container} id="projects">
-      <h2 className={styles.title}>Projects</h2>
+      <h2 className={styles.sectionTitle}>
+        <span className={styles.titleIcon}>🚀</span>
+        Projects
+      </h2>
       <div className={styles.projects}>
         {memoizedProjects.map((project, id) => (
           <ProjectCard 

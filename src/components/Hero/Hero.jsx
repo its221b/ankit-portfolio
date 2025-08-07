@@ -6,29 +6,17 @@ const Hero = () => {
   // Memoize the hero image source to prevent unnecessary re-renders
   const heroImageSrc = useMemo(() => getImageUrl("hero/heroImage.png"), []);
 
-  // Memoize contact information
-  const contactInfo = useMemo(
-    () => ({
-      email: "as.9784845590@gmail.com",
-      subject: "Portfolio Inquiry",
-      body: "Hi Ankit, I'd like to discuss potential opportunities with you.",
-    }),
-    []
-  );
-
-  // Optimize email link generation
-  const emailLink = useMemo(() => {
-    const params = new URLSearchParams({
-      subject: contactInfo.subject,
-      body: contactInfo.body,
-    });
-    return `mailto:${contactInfo.email}?${params.toString()}`;
-  }, [contactInfo]);
-
-  // Handle contact button click with analytics tracking
-  const handleContactClick = useCallback(() => {
-    // Add analytics tracking here if needed
-    console.log("Contact button clicked");
+  // Handle contact button click with smooth scroll to contact section
+  const handleContactClick = useCallback((e) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    console.log("Contact button clicked - navigating to contact section");
   }, []);
 
   // Handle image load error
@@ -57,10 +45,10 @@ const Hero = () => {
         </p>
         <div className={styles.ctaContainer}>
           <a
-            href={emailLink}
+            href="#contact"
             className={styles.contactBtn}
             onClick={handleContactClick}
-            aria-label="Send email to Ankit Soni"
+            aria-label="Navigate to contact section"
           >
             <span className={styles.btnText}>Contact Me</span>
             <span className={styles.btnIcon}>→</span>
