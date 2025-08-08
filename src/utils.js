@@ -1,3 +1,6 @@
+// Import all images using Vite's glob import
+const images = import.meta.glob('./assets/**/*.png', { eager: true });
+
 export const getImageUrl = (path) => {
     if (!path) {
         console.warn('getImageUrl: path parameter is required');
@@ -7,7 +10,14 @@ export const getImageUrl = (path) => {
     // Remove any leading slashes to ensure consistent path handling
     const cleanPath = path.replace(/^\/+/, '');
     
-    // In Vite, files in public/assets/ are served from /assets/
-    // For GitHub Pages, we need to include the repo name in the path
-    return `./public/assets/${cleanPath}`;
+    // Find the image in the imported assets
+    const imagePath = `./assets/${cleanPath}`;
+    const image = images[imagePath];
+    
+    if (image) {
+        return image.default;
+    } else {
+        console.error(`Image not found: ${cleanPath}`);
+        return '';
+    }
 }
