@@ -9,11 +9,11 @@ const Hero = () => {
   // Handle contact button click with smooth scroll to contact section
   const handleContactClick = useCallback((e) => {
     e.preventDefault();
-    const contactSection = document.getElementById('contact');
+    const contactSection = document.getElementById("contact");
     if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      contactSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
     console.log("Contact button clicked - navigating to contact section");
@@ -32,17 +32,29 @@ const Hero = () => {
           Hi, I'm <span className={styles.highlight}>Ankit Soni</span>
         </h1>
         <p className={styles.description}>
-          Frontend Developer with <strong>3+ years</strong> of experience
-          specializing in building scalable web and mobile applications using{" "}
-          <span className={styles.techHighlight}>React</span>,{" "}
-          <span className={styles.techHighlight}>React Native</span>, and{" "}
-          <span className={styles.techHighlight}>JavaScript</span>. Proven
-          expertise in real-time data systems, multilingual applications, and
-          performance optimizations. Adept at writing clean, maintainable code
-          using design patterns, OOPs, and Agile methodologies. Strong
-          foundation in DSA, and C++. Seeking to contribute technical excellence
-          and product thinking in a fast-paced engineering team.
+          Frontend Developer with <strong>3+ years</strong> of experience in
+          designing and delivering high-performance{" "}
+          <span className={styles.techHighlight}>web</span> and{" "}
+          <span className={styles.techHighlight}>mobile applications</span>{" "}
+          using <span className={styles.techHighlight}>React.js</span>,{" "}
+          <span className={styles.techHighlight}>React Native</span>,{" "}
+          <span className={styles.techHighlight}>JavaScript</span>, and{" "}
+          <span className={styles.techHighlight}>TypeScript</span>. Skilled in
+          building{" "}
+          <strong>scalable, maintainable, and accessible UI solutions</strong>{" "}
+          across diverse domains including real estate, healthcare, and edtech.
+          Proven expertise in{" "}
+          <span className={styles.techHighlight}>Redux</span>,{" "}
+          <span className={styles.techHighlight}>Context API</span>,{" "}
+          <span className={styles.techHighlight}>performance optimization</span>
+          , and <span className={styles.techHighlight}>responsive design</span>.
+          Strong grasp of DSA and OOP, with hands-on experience in{" "}
+          <strong>Agile</strong> environments. Adept at collaborating with
+          cross-functional teams to deliver{" "}
+          <strong>business-driven solutions</strong> for product-based and
+          consultancy-driven requirements.
         </p>
+
         <div className={styles.ctaContainer}>
           <a
             href="#contact"

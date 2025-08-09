@@ -59,7 +59,7 @@ const NavBar = () => {
   return (
     <nav className={styles.navbar} role="navigation" aria-label="Main navigation">
       <a className={styles.title} href="/" aria-label="Portfolio home">
-        Portfolio
+        My Portfolio
       </a>
       
       <div className={styles.menu}>

@@ -3,10 +3,14 @@
     "title": "Real Better",
     "imageSrc": "projects/realbetter.png",
     "description": [
-      "Built modular, reusable UI components and integrated real-time chat with PubNub, improving engagement and reducing load time by 30%.",
-      "Applied performance techniques like lazy loading, useMemo, and useCallback to optimize rendering and memory usage."
+      "Designed and implemented a property matching algorithm using multi-parameter filtering (location, budget, property type) to improve lead-to-conversion rates.",
+      "Built modular, reusable UI components with React.js & SCSS for faster feature rollouts and consistent design across the platform.",
+      "Integrated real-time chat functionality using PubNub and WebSockets, reducing broker response time by 25% and increasing user engagement.",
+      "Optimized performance with lazy loading, useMemo, and useCallback, improving page load time by 30% and reducing memory usage.",
+      "Implemented secure authentication with JWT tokens and role-based access control for buyers, sellers, and brokers.",
+      "Collaborated with backend teams to integrate REST APIs for property listings, payment gateways, and location services."
     ],
-    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "skills": ["Javascript", "React", "Redux", "REST APIs", "SCSS", "WebSockets", "PubNub", "JWT"],
     "demo": "https://realbetter.com/",
     "playstorelink": "https://play.google.com/store/apps/details?id=com.presideatech.realbetter",
     "appstorelink": "https://apps.apple.com/in/app/realbetter/id6477820282"
@@ -15,10 +19,14 @@
     "title": "The Zaky",
     "imageSrc": "projects/thezaky.png",
     "description": [
-      "Upgraded React Native version (0.59 → 0.66), resolved critical UI/UX bugs, and integrated multi-language support (EN/FR/ES) using react-i18n.",
-      "Published app on both Play Store & App Store with optimized state management and API handling for smooth user experience."
+      "Migrated app from React Native v0.59 to v0.66, modernizing the codebase and ensuring compatibility with latest OS versions.",
+      "Developed daily health activity tracker integrated with cloud APIs, enabling real-time updates for doctors and caregivers.",
+      "Implemented multi-language support (EN, FR, ES) with react-i18next, enabling global usability and expanding market reach.",
+      "Optimized state management with Redux and API caching, ensuring offline capability and smooth UI transitions even in low-network areas.",
+      "Integrated push notifications for medicine reminders, health alerts, and scheduled check-ups using Firebase Cloud Messaging.",
+      "Published app on both Play Store and App Store, following platform-specific performance and accessibility guidelines."
     ],
-    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "skills": ["Javascript", "React Native", "Redux", "REST APIs", "i18n", "Firebase Cloud Messaging", "API Caching"],
     "demo": "https://thezaky.com/",
     "playstorelink": "https://play.google.com/store/apps/details?id=com.thezaky&hl=en_IN",
     "appstorelink": "https://apps.apple.com/in/app/the-zaky-birth-3yr-tracker/id1512215757"
@@ -27,10 +35,14 @@
     "title": "Jigya",
     "imageSrc": "projects/jigya.png",
     "description": [
-      "Developed infinite scrolling using Intersection Observer and virtual rendering to reduce server calls by 20%.",
-      "Delivered bug-free UI enhancements under tight deadlines, ensuring responsive and accessible design. "
+      "Implemented infinite scrolling with Intersection Observer API and virtual rendering, reducing API calls by 20% and improving browsing speed.",
+      "Built a dynamic course recommendation engine using user profile data and job preferences to increase user engagement.",
+      "Ensured responsive and accessible UI with semantic HTML, ARIA roles, and mobile-first design principles.",
+      "Integrated REST APIs for job listings, course catalogs, and user profiles with robust error handling and retry logic.",
+      "Developed role-based dashboards for students, recruiters, and educators to manage applications, postings, and learning materials.",
+      "Delivered features under tight deadlines in collaboration with designers and backend engineers, ensuring zero production bugs in final releases."
     ],
-    "skills": ["Javascript", "React", "Redux", "REST APIs"],
+    "skills": ["Javascript", "React", "Redux", "REST APIs", "Intersection Observer API", "Virtual Rendering", "Semantic HTML", "ARIA"],
     "demo": "https://jigya.co.in/"
   }
 ]
