@@ -25,7 +25,6 @@ const Education = () => {
     <section className={styles.container} id="education">
       <div className={styles.content}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.titleIcon}>🎓</span>
           Education
         </h2>
         

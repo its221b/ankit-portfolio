@@ -267,9 +267,14 @@
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   transform-style: preserve-3d;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   border-radius: 50%;
   overflow: hidden;
-  padding: 8px;
+  /* Move border-padding effects to wrapper for better Android stability */
   margin: 20px;
   box-sizing: border-box;
 }
@@ -281,29 +286,8 @@
   border-radius: 50%;
 }
 
-.heroImg::before {
-  content: '';
-  position: absolute;
-  top: -15px;
-  left: -15px;
-  right: -15px;
-  bottom: -15px;
-  background: linear-gradient(45deg, 
-    rgba(25, 55, 109, 0.4), 
-    rgba(74, 144, 226, 0.4), 
-    rgba(25, 55, 109, 0.4)
-  );
-  border-radius: 50%;
-  z-index: -1;
-  animation: borderGlow 3s ease-in-out infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  filter: blur(8px);
-}
-
-.heroImg:hover::before {
-  opacity: 1;
-}
+/* Note: pseudo-elements do not apply to replaced elements like <img> on many browsers.
+   We intentionally remove ::before from .heroImg for cross-browser stability. */
 
 .imageGlow {
   position: absolute;
@@ -380,6 +364,12 @@
     transform: translateY(0px) rotateY(0deg) rotateX(0deg) scale(1);
     filter: drop-shadow(0 20px 40px rgba(25, 55, 109, 0.3));
   }
+}
+
+/* Simpler animation for mobile/touch devices to avoid Android jitter with 3D transforms */
+@keyframes heroFloatSimple {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 @keyframes borderGlow {
@@ -607,9 +597,8 @@
   .heroImg {
     width: clamp(160px, 50vw, 350px);
     height: clamp(160px, 50vw, 350px);
-    animation: heroFloat 6s ease-in-out infinite;
+    animation: heroFloatSimple 6s ease-in-out infinite;
     margin: 10px;
-    padding: 6px;
   }
   .imageContainer {
     padding: 10px;
@@ -632,7 +621,7 @@
     width: clamp(140px, 60vw, 300px);
     height: clamp(140px, 60vw, 300px);
     margin: 8px;
-    padding: 5px;
+    animation: heroFloatSimple 6s ease-in-out infinite;
   }
   .imageContainer {
     padding: 8px;
@@ -653,9 +642,8 @@
   .heroImg {
     width: clamp(120px, 65vw, 280px);
     height: clamp(120px, 65vw, 280px);
-    animation: heroFloat 5s ease-in-out infinite;
+    animation: heroFloatSimple 5s ease-in-out infinite;
     margin: 6px;
-    padding: 4px;
   }
   .imageContainer {
     padding: 6px;
@@ -673,6 +661,29 @@
   .secondaryBtn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* Touch/Android specific improvements: disable complex 3D and heavy filters */
+@media (hover: none), (pointer: coarse) {
+  .heroImg {
+    animation: heroFloatSimple 6s ease-in-out infinite;
+    filter: drop-shadow(0 16px 32px rgba(25, 55, 109, 0.35));
+    transform: translateZ(0);
+  }
+
+  .heroImg:hover {
+    transform: none;
+  }
+
+  .imageGlow,
+  .imageGlow::before,
+  .imageContainer::before,
+  .imageContainer::after,
+  .particle1,
+  .particle2,
+  .particle3 {
+    animation: none;
   }
 }
 

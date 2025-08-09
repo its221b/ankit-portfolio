@@ -27,12 +27,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: fadeInUp 1s ease-out;
-}
-
-.titleIcon {
-  display: inline-block;
-  margin-right: 15px;
-  animation: bounce 2s ease-in-out infinite;
+  width: 100%;
+  display: block;
 }
 
 @keyframes fadeInUp {
@@ -46,22 +42,10 @@
   }
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
-
 .projects {
   margin-top: clamp(20px, 4vw, 37px);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: clamp(20px, 4vw, 30px);
   width: 100%;
   justify-items: center;
@@ -82,9 +66,25 @@
   }
   
   .projects {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: clamp(20px, 4vw, 30px);
     margin-top: clamp(15px, 3vw, 25px);
+  }
+}
+
+/* Large Mobile (600px - 767px) */
+@media screen and (max-width: 767px) and (min-width: 600px) {
+  .sectionTitle {
+    font-size: clamp(28px, 6vw, 42px);
+    margin-bottom: 45px;
+  }
+}
+
+/* Medium Mobile (480px - 599px) */
+@media screen and (max-width: 599px) and (min-width: 480px) {
+  .sectionTitle {
+    font-size: clamp(24px, 7vw, 36px);
+    margin-bottom: 40px;
   }
 }
 
@@ -99,10 +99,27 @@
     grid-template-columns: 1fr;
     gap: clamp(15px, 4vw, 25px);
     margin-top: clamp(15px, 3vw, 25px);
+    align-items: stretch;
   }
   
   .sectionTitle {
-    font-size: clamp(20px, 5vw, 28px);
-    margin-bottom: clamp(15px, 3vw, 25px);
+    font-size: clamp(20px, 8vw, 32px);
+    margin-bottom: 35px;
+  }
+}
+
+/* Extra Small Mobile (320px - 359px) */
+@media screen and (max-width: 359px) {
+  .sectionTitle {
+    font-size: clamp(18px, 9vw, 28px);
+    margin-bottom: 30px;
+  }
+}
+
+/* Ultra Small Mobile (below 320px) */
+@media screen and (max-width: 319px) {
+  .sectionTitle {
+    font-size: clamp(16px, 10vw, 24px);
+    margin-bottom: 25px;
   }
 }

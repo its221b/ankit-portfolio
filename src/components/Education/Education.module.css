@@ -3,7 +3,7 @@
 .container {
   position: relative;
   padding: 80px 8%;
-  min-height: 100vh;
+  min-height: auto;
   background: linear-gradient(
     135deg,
     rgba(25, 55, 109, 0.05) 0%,
@@ -36,13 +36,11 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: fadeInUp 1s ease-out;
+  width: 100%;
+  display: block;
 }
 
-.titleIcon {
-  display: inline-block;
-  margin-right: 15px;
-  animation: bounce 2s ease-in-out infinite;
-}
+
 
 .educationCard {
   display: flex;
@@ -59,6 +57,15 @@
   animation: slideInUp 1s ease-out 0.2s both;
   position: relative;
   overflow: hidden;
+  contain: layout paint;
+  flex-wrap: wrap;
+}
+
+/* Improve wrapping and avoid overflow at narrow widths */
+@media (max-width: 899px) {
+  .educationCard {
+    gap: 32px;
+  }
 }
 
 .educationCard::before {
@@ -86,8 +93,8 @@
 .imageContainer {
   flex-shrink: 0;
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: clamp(220px, 40vw, 300px);
+  height: clamp(220px, 40vw, 300px);
   animation: float 6s ease-in-out infinite;
   overflow: hidden;
 }
@@ -125,16 +132,23 @@
 .logoContainer {
   position: relative;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6px, 1.2vw, 12px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(87, 108, 188, 0.6), rgba(74, 144, 226, 0.6));
+  box-shadow:
+    0 6px 16px rgba(25, 55, 109, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .collegeLogo {
-  width: 80px;
-  height: 80px;
+  width: clamp(80px, 15vw, 140px);
+  height: clamp(80px, 15vw, 140px);
   border-radius: 50%;
   object-fit: cover;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 8px;
-  box-shadow: 0 8px 20px rgba(25, 55, 109, 0.3);
+  box-shadow: 0 8px 20px rgba(25, 55, 109, 0.25);
   transition: all 0.3s ease;
   animation: logoFloat 4s ease-in-out infinite;
 }
@@ -149,8 +163,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+  width: clamp(110px, 20vw, 200px);
+  height: clamp(110px, 20vw, 200px);
   background: radial-gradient(
     circle,
     rgba(74, 144, 226, 0.3) 0%,
@@ -279,6 +293,7 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   animation: bookFloat 8s ease-in-out infinite;
+  will-change: transform;
 }
 
 .floatingBook1 {
@@ -304,6 +319,7 @@
   border-radius: 50%;
   filter: blur(40px);
   animation: orbFloat 10s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
 .glowOrb1 {
@@ -358,17 +374,7 @@
   }
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
-  }
-}
+
 
 @keyframes float {
   0%, 100% {
@@ -554,6 +560,12 @@
   }
 }
 
+/* Hide decorative background elements on tablets and smaller to avoid overlap/jank */
+@media (max-width: 1024px) {
+  .backgroundElements { display: none; }
+  .logoGlow { display: none; }
+}
+
 /* Tablet Portrait (768px - 899px) */
 @media (max-width: 899px) and (min-width: 768px) {
   .container {
@@ -571,8 +583,8 @@
   }
   
   .collegeLogo {
-    width: 75px;
-    height: 75px;
+    width: clamp(90px, 18vw, 120px);
+    height: clamp(90px, 18vw, 120px);
   }
   
   .collegeInfo {
@@ -599,13 +611,13 @@
 /* Large Mobile (600px - 767px) */
 @media (max-width: 767px) and (min-width: 600px) {
   .container {
-    padding: 50px 4%;
+    padding: 30px 4% 20px;
   }
   
   .educationCard {
     flex-direction: column;
-    gap: 40px;
-    padding: 35px 25px;
+    gap: 24px;
+    padding: 24px 20px;
   }
   
   .imageContainer {
@@ -613,8 +625,8 @@
   }
   
   .collegeLogo {
-    width: 70px;
-    height: 70px;
+    width: clamp(80px, 20vw, 110px);
+    height: clamp(80px, 20vw, 110px);
   }
   
   .collegeInfo {
@@ -645,13 +657,13 @@
 /* Medium Mobile (480px - 599px) */
 @media (max-width: 599px) and (min-width: 480px) {
   .container {
-    padding: 40px 3%;
+    padding: 25px 3% 15px;
   }
   
   .educationCard {
     flex-direction: column;
-    gap: 35px;
-    padding: 30px 20px;
+    gap: 20px;
+    padding: 20px 16px;
   }
   
   .imageContainer {
@@ -659,8 +671,8 @@
   }
   
   .collegeLogo {
-    width: 65px;
-    height: 65px;
+    width: clamp(72px, 22vw, 100px);
+    height: clamp(72px, 22vw, 100px);
   }
   
   .collegeInfo {
@@ -701,13 +713,13 @@
 /* Small Mobile (360px - 479px) */
 @media (max-width: 479px) and (min-width: 360px) {
   .container {
-    padding: 35px 2%;
+    padding: 20px 2% 10px;
   }
   
   .educationCard {
     flex-direction: column;
-    gap: 30px;
-    padding: 25px 15px;
+    gap: 16px;
+    padding: 18px 12px;
   }
   
   .imageContainer {
@@ -715,8 +727,8 @@
   }
   
   .collegeLogo {
-    width: 60px;
-    height: 60px;
+    width: clamp(64px, 24vw, 90px);
+    height: clamp(64px, 24vw, 90px);
   }
   
   .collegeInfo {
@@ -757,13 +769,13 @@
 /* Extra Small Mobile (320px - 359px) */
 @media (max-width: 359px) {
   .container {
-    padding: 30px 1%;
+    padding: 15px 1% 8px;
   }
   
   .educationCard {
     flex-direction: column;
-    gap: 25px;
-    padding: 20px 10px;
+    gap: 12px;
+    padding: 16px 8px;
   }
   
   .imageContainer {
@@ -771,8 +783,8 @@
   }
   
   .collegeLogo {
-    width: 55px;
-    height: 55px;
+    width: clamp(56px, 26vw, 84px);
+    height: clamp(56px, 26vw, 84px);
   }
   
   .collegeInfo {
@@ -813,13 +825,13 @@
 /* Ultra Small Mobile (below 320px) */
 @media (max-width: 319px) {
   .container {
-    padding: 25px 1%;
+    padding: 12px 1% 6px;
   }
   
   .educationCard {
     flex-direction: column;
-    gap: 20px;
-    padding: 15px 8px;
+    gap: 10px;
+    padding: 12px 6px;
   }
   
   .imageContainer {
@@ -827,8 +839,8 @@
   }
   
   .collegeLogo {
-    width: 50px;
-    height: 50px;
+    width: clamp(50px, 28vw, 78px);
+    height: clamp(50px, 28vw, 78px);
   }
   
   .collegeInfo {
@@ -885,6 +897,7 @@
   .sectionTitle {
     margin-bottom: 30px;
   }
+  .backgroundElements { display: none; }
 }
 
 /* High DPI Displays */
@@ -892,6 +905,8 @@
   .collegeLogo {
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    -webkit-mask-image: radial-gradient(white 70%, transparent 72%);
+    mask-image: radial-gradient(white 70%, transparent 72%);
   }
 }
 
@@ -954,5 +969,43 @@
   
   .achievementBadge:hover {
     transform: none;
+  }
+}
+
+/* Mobile typography and background cleanup */
+@media (max-width: 767px) {
+  /* Hide decorative floating elements that look noisy on mobile */
+  .backgroundElements {
+    display: none;
+  }
+
+  /* Tighter, more readable typography on small screens */
+  .sectionTitle {
+    font-size: clamp(22px, 7vw, 28px);
+    margin-bottom: 32px;
+  }
+  .collegeName {
+    font-size: clamp(18px, 5.5vw, 22px);
+  }
+  .degree {
+    font-size: clamp(14px, 4.5vw, 18px);
+  }
+  .branch {
+    font-size: clamp(12px, 4vw, 16px);
+  }
+  .dateRange, .cgpa {
+    font-size: clamp(12px, 3.8vw, 14px);
+    padding: 6px 12px;
+  }
+  .achievementBadge {
+    font-size: clamp(10px, 3.5vw, 12px);
+    padding: 8px 12px;
+  }
+}
+
+/* Touch devices: remove decorative background */
+@media (hover: none), (pointer: coarse) {
+  .backgroundElements {
+    display: none;
   }
 }

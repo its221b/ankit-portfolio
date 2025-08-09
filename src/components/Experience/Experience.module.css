@@ -31,12 +31,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   animation: fadeInUp 1s ease-out;
-}
-
-.titleIcon {
-  display: inline-block;
-  margin-right: 15px;
-  animation: bounce 2s ease-in-out infinite;
+  width: 100%;
+  display: block;
 }
 
 @keyframes fadeInUp {
@@ -47,18 +43,6 @@
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
   }
 }
 
@@ -132,6 +116,11 @@
   50% {
     transform: translateY(-3px);
   }
+}
+
+/* Reduce motion on touch devices to prevent jitter */
+@media (hover: none), (pointer: coarse) {
+  .skillImageContainer { animation: none; }
 }
 
 .skillImageContainer::before {
@@ -329,7 +318,7 @@
 }
 
 .historyItemDetails h3 {
-  font-size: clamp(16px, 3vw, 30px);
+  font-size: clamp(16px, 2.8vw, 26px);
   font-weight: 500;
   margin: 0 0 clamp(4px, 1vw, 8px) 0;
   line-height: 1.3;
@@ -337,7 +326,7 @@
 }
 
 .historyItemDetails p {
-  font-size: clamp(14px, 2.5vw, 20px);
+  font-size: clamp(13px, 2.2vw, 18px);
   font-weight: 300;
   margin: 0;
   line-height: 1.4;
@@ -512,7 +501,7 @@
   }
   
   .accordionContent ul {
-    font-size: clamp(13px, 3.5vw, 18px);
+    font-size: clamp(12px, 3.5vw, 16px);
     padding-left: clamp(12px, 4vw, 16px);
   }
   
@@ -527,7 +516,7 @@
   }
   
   .skill p {
-    font-size: clamp(12px, 3vw, 16px);
+    font-size: clamp(11px, 3.2vw, 14px);
   }
   
   .accordionContent.open {

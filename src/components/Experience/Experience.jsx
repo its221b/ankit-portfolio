@@ -104,7 +104,6 @@ const Experience = () => {
   return (
     <section className={styles.container} id="experience">
       <h2 className={styles.sectionTitle}>
-        <span className={styles.titleIcon}>💼</span>
         Experience
       </h2>
       <div className={styles.content}>

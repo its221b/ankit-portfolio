@@ -592,19 +592,29 @@
 @media screen and (max-width: 480px) {
   .container {
     max-width: 100%;
-    height: clamp(140px, 30vw, 180px);
+    min-height: 320px;
+    height: auto;
   }
-  
-  .container:hover {
-    height: clamp(320px, 45vw, 400px);
-  }
-  
+
+  /* Mobile: Always expanded; hover is unreliable on Android */
   .imageContainer {
-    height: 100%;
+    height: clamp(140px, 45vw, 200px);
+    margin-bottom: clamp(12px, 3vw, 18px);
   }
-  
-  .container:hover .imageContainer {
-    height: clamp(120px, 25vw, 160px);
+  .imageOverlay { opacity: 0; }
+  .overlayTitle { opacity: 0; transform: translateY(10px); }
+  .content {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: none;
+    pointer-events: auto;
+  }
+  .title,
+  .descriptionContainer,
+  .skillsContainer,
+  .links {
+    opacity: 1;
+    transform: translateY(0);
   }
   
   .title {
@@ -637,6 +647,24 @@
   .linkIcon {
     font-size: clamp(14px, 4vw, 18px);
   }
+}
+
+/* Touch devices: ensure expanded layout and stable animations */
+@media (hover: none), (pointer: coarse) {
+  .container {
+    height: auto;
+  }
+  .imageContainer {
+    height: clamp(140px, 45vw, 200px);
+  }
+  .imageOverlay { opacity: 0; }
+  .overlayTitle { opacity: 0; transform: translateY(10px); }
+  .content {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: none;
+  }
+  .linkButton { animation: none; }
 }
 
 @media screen and (max-width: 360px) {
