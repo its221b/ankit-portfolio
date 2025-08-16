@@ -2,6 +2,7 @@
   {
     "title": "Real Better",
     "imageSrc": "projects/realbetter.png",
+    "info": "A scalable real-estate platform enabling users to buy, sell, and rent properties with broker assistance and intelligent property matching.",
     "description": [
       "Designed and implemented a property matching algorithm using multi-parameter filtering (location, budget, property type) to improve lead-to-conversion rates.",
       "Built modular, reusable UI components with React.js & SCSS for faster feature rollouts and consistent design across the platform.",
@@ -10,7 +11,17 @@
       "Implemented secure authentication with JWT tokens and role-based access control for buyers, sellers, and brokers.",
       "Collaborated with backend teams to integrate REST APIs for property listings, payment gateways, and location services."
     ],
-    "skills": ["Javascript", "React", "Redux", "REST APIs", "SCSS", "WebSockets", "PubNub", "JWT"],
+    "skills": [
+      "Javascript",
+      "React",
+      "React Native",
+      "Redux",
+      "REST APIs",
+      "SCSS",
+      "WebSockets",
+      "PubNub",
+      "JWT"
+    ],
     "demo": "https://realbetter.com/",
     "playstorelink": "https://play.google.com/store/apps/details?id=com.presideatech.realbetter",
     "appstorelink": "https://apps.apple.com/in/app/realbetter/id6477820282"
@@ -18,6 +29,7 @@
   {
     "title": "The Zaky",
     "imageSrc": "projects/thezaky.png",
+    "info": "A healthcare mobile app helping organizations track and support infants born with     health conditions through product recommendations and daily activity tracking.",
     "description": [
       "Migrated app from React Native v0.59 to v0.66, modernizing the codebase and ensuring compatibility with latest OS versions.",
       "Developed daily health activity tracker integrated with cloud APIs, enabling real-time updates for doctors and caregivers.",
@@ -26,7 +38,16 @@
       "Integrated push notifications for medicine reminders, health alerts, and scheduled check-ups using Firebase Cloud Messaging.",
       "Published app on both Play Store and App Store, following platform-specific performance and accessibility guidelines."
     ],
-    "skills": ["Javascript", "React Native", "Redux", "REST APIs", "i18n", "Firebase Cloud Messaging", "API Caching"],
+    "skills": [
+      "Javascript",
+      "React",
+      "React Native",
+      "Redux",
+      "REST APIs",
+      "i18n",
+      "Firebase Cloud Messaging",
+      "API Caching"
+    ],
     "demo": "https://thezaky.com/",
     "playstorelink": "https://play.google.com/store/apps/details?id=com.thezaky&hl=en_IN",
     "appstorelink": "https://apps.apple.com/in/app/the-zaky-birth-3yr-tracker/id1512215757"
@@ -34,6 +55,7 @@
   {
     "title": "Jigya",
     "imageSrc": "projects/jigya.png",
+    "info": " A hybrid job and learning platform where users can apply for jobs while accessing online educational.",
     "description": [
       "Implemented infinite scrolling with Intersection Observer API and virtual rendering, reducing API calls by 20% and improving browsing speed.",
       "Built a dynamic course recommendation engine using user profile data and job preferences to increase user engagement.",
@@ -42,7 +64,16 @@
       "Developed role-based dashboards for students, recruiters, and educators to manage applications, postings, and learning materials.",
       "Delivered features under tight deadlines in collaboration with designers and backend engineers, ensuring zero production bugs in final releases."
     ],
-    "skills": ["Javascript", "React", "Redux", "REST APIs", "Intersection Observer API", "Virtual Rendering", "Semantic HTML", "ARIA"],
+    "skills": [
+      "Javascript",
+      "React",
+      "Redux",
+      "REST APIs",
+      "Intersection Observer API",
+      "Virtual Rendering",
+      "Semantic HTML",
+      "ARIA"
+    ],
     "demo": "https://jigya.co.in/"
   }
 ]

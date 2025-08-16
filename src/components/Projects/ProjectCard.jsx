@@ -1,12 +1,11 @@
-import React, { useCallback, useMemo, useRef, useEffect } from "react";
+import React, { useCallback, useMemo, useRef, useEffect, useState } from "react";
 import styles from "./ProjectCard.module.css";
 import { getImageUrl } from "../../utils";
 
-export const ProjectCard = React.memo(({ project }) => {
+export const ProjectCard = React.memo(({ project, onClick }) => {
   const { 
     title, 
     imageSrc, 
-    description, 
     skills, 
     demo, 
     source,
@@ -14,153 +13,169 @@ export const ProjectCard = React.memo(({ project }) => {
     appstorelink
   } = project;
 
+
+
   const cardRef = useRef(null);
-  const isHovered = useRef(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Memoize skills to prevent unnecessary re-renders
   const memoizedSkills = useMemo(() => skills, [skills]);
 
-  // Memoize description to prevent unnecessary re-renders
-  const memoizedDescription = useMemo(() => description, [description]);
+  // Intersection Observer for animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-  // Handle link clicks with analytics tracking
-  const handleLinkClick = useCallback((linkType, url) => {
-    // You can add analytics tracking here
-    console.log(`${linkType} clicked for ${title}`);
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }, [title]);
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
 
-  // Handle mouse enter with smooth scroll
+    return () => observer.disconnect();
+  }, []);
+
+  // Handle card click
+  const handleCardClick = useCallback(() => {
+    if (onClick) {
+      onClick();
+    }
+  }, [onClick]);
+
+  // Handle mouse enter with 3D effect
   const handleMouseEnter = useCallback(() => {
-    isHovered.current = true;
-    
-    // Delay the scroll to allow the expansion animation to start
-    setTimeout(() => {
-      if (isHovered.current && cardRef.current) {
-        cardRef.current.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'nearest'
-        });
-      }
-    }, 300); // Wait for expansion to start
+    setIsHovered(true);
   }, []);
 
   // Handle mouse leave
   const handleMouseLeave = useCallback(() => {
-    isHovered.current = false;
-  }, []);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      isHovered.current = false;
-    };
+    setIsHovered(false);
   }, []);
 
   return (
     <div 
-      className={styles.container}
+      className={`${styles.container} ${isVisible ? styles.visible : ''} ${isHovered ? styles.hovered : ''}`}
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={handleCardClick}
     >
-      <div className={styles.imageContainer}>
-        <img
-          src={getImageUrl(imageSrc)}
-          alt={`${title} project screenshot`}
-          className={styles.image}
-          loading="lazy"
-          width="345"
-          height="200"
-        />
-        <div className={styles.imageOverlay}>
-          <div className={styles.overlayContent}>
-            <h3 className={styles.overlayTitle}>{title}</h3>
+      <div className={styles.cardContent}>
+        <div className={styles.imageContainer}>
+          <img
+            src={getImageUrl(imageSrc)}
+            alt={`${title} project screenshot`}
+            className={styles.image}
+            loading="lazy"
+            width="345"
+            height="200"
+          />
+          <div className={styles.imageOverlay}>
+            <div className={styles.overlayContent}>
+              <h3 className={styles.overlayTitle}>{title}</h3>
+              <div className={styles.clickHint}>Click to view details</div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
         
-        <div className={styles.descriptionContainer}>
-          {memoizedDescription.map((desc, index) => (
-            <p key={`desc-${index}`} className={styles.description}>
-              {desc}
-            </p>
-          ))}
-        </div>
-
-        <div className={styles.skillsContainer}>
-          <h4 className={styles.skillsTitle}>Technologies Used:</h4>
-          <ul className={styles.skills}>
-            {memoizedSkills.map((skill, id) => (
-              <li key={`skill-${id}`} className={styles.skill}>
-                {skill}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={styles.links}>
-          {demo && (
-            <button 
-              className={`${styles.linkButton} ${styles.demoLink}`}
-              onClick={() => handleLinkClick('demo', demo)}
-              aria-label={`View ${title} demo`}
-              title="View Demo"
-            >
-              <span className={styles.linkIcon}>🌐</span>
-            </button>
-          )}
+        <div className={styles.content}>
+          <h3 className={styles.title}>{title}</h3>
           
-          {source && (
-            <button 
-              className={`${styles.linkButton} ${styles.sourceLink}`}
-              onClick={() => handleLinkClick('source', source)}
-              aria-label={`View ${title} source code`}
-              title="View Source Code"
-            >
-              <span className={styles.linkIcon}>📁</span>
-            </button>
-          )}
+          <div className={styles.descriptionContainer}>
+            <p className={styles.description}>
+              {project.info || 'No information available'}
+            </p>
+          </div>
 
-          {playstorelink && (
-            <button 
-              className={`${styles.linkButton} ${styles.playstoreLink}`}
-              onClick={() => handleLinkClick('playstore', playstorelink)}
-              aria-label={`Download ${title} from Play Store`}
-              title="Download from Play Store"
-            >
-              <img
-                src={getImageUrl("projects/playstore.png")}
-                alt="Google Play Store"
-                className={styles.storeIcon}
-                loading="lazy"
-                width="24"
-                height="24"
-              />
-            </button>
-          )}
+          <div className={styles.skillsContainer}>
+            <div className={styles.skills}>
+              {memoizedSkills.slice(0, 3).map((skill, id) => (
+                <span key={`skill-${id}`} className={styles.skill}>
+                  {skill}
+                </span>
+              ))}
+              {memoizedSkills.length > 3 && (
+                <span className={styles.moreSkills}>+{memoizedSkills.length - 3} more</span>
+              )}
+            </div>
+          </div>
 
-          {appstorelink && (
-            <button 
-              className={`${styles.linkButton} ${styles.appstoreLink}`}
-              onClick={() => handleLinkClick('appstore', appstorelink)}
-              aria-label={`Download ${title} from App Store`}
-              title="Download from App Store"
-            >
-              <img
-                src={getImageUrl("projects/appstore.png")}
-                alt="Apple App Store"
-                className={styles.storeIcon}
-                loading="lazy"
-                width="24"
-                height="24"
-              />
-            </button>
-          )}
+          <div className={styles.links}>
+            {demo && (
+              <button 
+                className={`${styles.linkButton} ${styles.demoLink}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(demo, '_blank', 'noopener,noreferrer');
+                }}
+                aria-label={`View ${title} demo`}
+                title="View Demo"
+              >
+                <span className={styles.linkIcon}>🌐</span>
+              </button>
+            )}
+            
+            {source && (
+              <button 
+                className={`${styles.linkButton} ${styles.sourceLink}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(source, '_blank', 'noopener,noreferrer');
+                }}
+                aria-label={`View ${title} source code`}
+                title="View Source Code"
+              >
+                <span className={styles.linkIcon}>📁</span>
+              </button>
+            )}
+
+            {playstorelink && (
+              <button 
+                className={`${styles.linkButton} ${styles.playstoreLink}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(playstorelink, '_blank', 'noopener,noreferrer');
+                }}
+                aria-label={`Download ${title} from Play Store`}
+                title="Download from Play Store"
+              >
+                <img
+                  src={getImageUrl("projects/playstore.png")}
+                  alt="Google Play Store"
+                  className={styles.storeIcon}
+                  loading="lazy"
+                  width="24"
+                  height="24"
+                />
+              </button>
+            )}
+
+            {appstorelink && (
+              <button 
+                className={`${styles.linkButton} ${styles.appstoreLink}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(appstorelink, '_blank', 'noopener,noreferrer');
+                }}
+                aria-label={`Download ${title} from App Store`}
+                title="Download from App Store"
+              >
+                <img
+                  src={getImageUrl("projects/appstore.png")}
+                  alt="Apple App Store"
+                  className={styles.storeIcon}
+                  loading="lazy"
+                  width="24"
+                  height="24"
+                />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -16,12 +16,10 @@ const Hero = () => {
         block: "start",
       });
     }
-    console.log("Contact button clicked - navigating to contact section");
   }, []);
 
   // Handle image load error
   const handleImageError = useCallback((event) => {
-    console.error("Hero image failed to load");
     event.target.style.display = "none";
   }, []);
 

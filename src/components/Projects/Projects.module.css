@@ -1,7 +1,7 @@
 @import "../../vars.css";
 
 .container {
-  margin-top: clamp(40px, 8vw, 76px);
+  margin-top: clamp(40px, 8vw, 80px);
   color: var(--color-text);
   margin-left: clamp(5%, 10vw, 10%);
   margin-right: clamp(5%, 10vw, 10%);
@@ -42,20 +42,63 @@
   }
 }
 
-.projects {
+.projectsContainer {
   margin-top: clamp(20px, 4vw, 37px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(20px, 4vw, 30px);
   width: 100%;
-  justify-items: center;
+  overflow: visible;
+  position: relative;
+  min-height: 520px; /* Ensure consistent height for better visual balance */
+}
+
+.projects {
+  display: flex;
+  gap: clamp(20px, 4vw, 30px);
+  padding: 20px clamp(25px, 6vw, 40px);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.projects::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Add scroll indicators */
+.projectsContainer::before,
+.projectsContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(40px, 8vw, 80px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.projectsContainer::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(25, 55, 109, 0.9) 0%, transparent 100%);
+}
+
+.projectsContainer::after {
+  right: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(25, 55, 109, 0.9) 100%);
 }
 
 /* Responsive Design */
+@media screen and (min-width: 1400px) {
+  .projects {
+    padding: 20px clamp(30px, 5vw, 50px);
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .projects {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: clamp(25px, 5vw, 35px);
+    padding: 20px clamp(25px, 6vw, 40px);
   }
 }
 
@@ -66,9 +109,14 @@
   }
   
   .projects {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: clamp(20px, 4vw, 30px);
     margin-top: clamp(15px, 3vw, 25px);
+    padding: 20px clamp(20px, 5vw, 35px);
+  }
+  
+  .projectsContainer::before,
+  .projectsContainer::after {
+    width: clamp(30px, 6vw, 60px);
   }
 }
 
@@ -96,15 +144,19 @@
   }
   
   .projects {
-    grid-template-columns: 1fr;
     gap: clamp(15px, 4vw, 25px);
     margin-top: clamp(15px, 3vw, 25px);
-    align-items: stretch;
+    padding: 15px clamp(15px, 4vw, 25px);
   }
   
   .sectionTitle {
     font-size: clamp(20px, 8vw, 32px);
     margin-bottom: 35px;
+  }
+  
+  .projectsContainer::before,
+  .projectsContainer::after {
+    width: clamp(25px, 5vw, 40px);
   }
 }
 

@@ -54,6 +54,8 @@
   -webkit-background-clip: text;
   background-clip: text;
   position: relative;
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .highlight::after {
@@ -110,9 +112,12 @@
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   position: relative;
   overflow: hidden;
+  text-align: center;
+  min-height: 60px;
 }
 
 .contactBtn::before {
@@ -592,6 +597,9 @@
   .secondaryBtn {
     padding: 15px 25px;
     font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .heroImg {
@@ -661,6 +669,10 @@
   .secondaryBtn {
     width: 100%;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 18px 20px;
+    min-height: 56px;
   }
 }
 
