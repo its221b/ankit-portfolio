@@ -3,7 +3,7 @@
 .container {
   min-width: 320px;
   max-width: 400px;
-  height: 500px;
+  height: 560px;
   perspective: 1000px;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -111,14 +111,14 @@
 }
 
 .overlayTitle {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .clickHint {
-  font-size: 14px;
+  font-size: 20px;
   opacity: 0.9;
   font-weight: 500;
 }
@@ -131,7 +131,7 @@
 }
 
 .title {
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 700;
   margin-bottom: 15px;
   color: var(--color-text);
@@ -144,7 +144,7 @@
 }
 
 .description {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 10px;
@@ -167,9 +167,9 @@
 .skill {
   background: rgba(74, 144, 226, 0.2);
   color: rgba(255, 255, 255, 0.9);
-  padding: 4px 8px;
+  padding: 6px 12px;
   border-radius: 12px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   border: 1px solid rgba(74, 144, 226, 0.3);
   transition: all 0.3s ease;
@@ -183,9 +183,9 @@
 .moreSkills {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.7);
-  padding: 4px 8px;
+  padding: 6px 12px;
   border-radius: 12px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 500;
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -225,7 +225,7 @@
 }
 
 .linkIcon {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .storeIcon {
@@ -239,7 +239,7 @@
   .container {
     min-width: 280px;
     max-width: 350px;
-    height: 450px;
+    height: 520px;
   }
   
   .imageContainer {
@@ -247,11 +247,27 @@
   }
   
   .title {
-    font-size: 18px;
+    font-size: 26px;
   }
   
   .description {
-    font-size: 13px;
+    font-size: 17px;
+  }
+  
+  .skill {
+    font-size: 15px;
+  }
+  
+  .moreSkills {
+    font-size: 15px;
+  }
+  
+  .overlayTitle {
+    font-size: 28px;
+  }
+  
+  .clickHint {
+    font-size: 18px;
   }
 }
 
@@ -259,7 +275,7 @@
   .container {
     min-width: 260px;
     max-width: 320px;
-    height: 420px;
+    height: 500px;
   }
   
   .imageContainer {
@@ -267,15 +283,31 @@
   }
   
   .cardContent {
-    padding: 15px;
+    padding: 16px;
   }
   
   .title {
-    font-size: 16px;
+    font-size: 24px;
   }
   
   .description {
-    font-size: 12px;
+    font-size: 16px;
+  }
+  
+  .skill {
+    font-size: 14px;
+  }
+  
+  .moreSkills {
+    font-size: 14px;
+  }
+  
+  .overlayTitle {
+    font-size: 26px;
+  }
+  
+  .clickHint {
+    font-size: 16px;
   }
   
   .links {
@@ -286,56 +318,48 @@
     width: 36px;
     height: 36px;
   }
+  
+  .linkIcon {
+    font-size: 16px;
+  }
 }
 
-/* Responsive Design for Project Cards */
-@media screen and (max-width: 830px) {
+@media (max-width: 359px) {
   .container {
-    margin: clamp(8px, 2vw, 16px) clamp(4px, 1vw, 8px);
-    min-width: 300px;
-    max-width: 380px;
+    min-width: 240px;
+    max-width: 300px;
     height: 480px;
   }
   
-  .cardContent {
-    padding: clamp(16px, 4vw, 20px);
-  }
-  
   .imageContainer {
-    margin-bottom: clamp(16px, 4vw, 20px);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .container {
-    margin: clamp(6px, 2vw, 14px) clamp(3px, 1vw, 6px);
-    min-width: 280px;
-    max-width: 360px;
-    height: 460px;
+    height: 140px;
   }
   
   .cardContent {
-    padding: clamp(14px, 4vw, 18px);
+    padding: 14px;
   }
   
-  .imageContainer {
-    margin-bottom: clamp(14px, 4vw, 18px);
-  }
-}
-
-@media screen and (max-width: 359px) {
-  .container {
-    margin: clamp(5px, 2vw, 12px) clamp(2px, 1vw, 5px);
-    min-width: 260px;
-    max-width: 340px;
-    height: 440px;
+  .title {
+    font-size: 22px;
   }
   
-  .cardContent {
-    padding: clamp(12px, 4vw, 16px);
+  .description {
+    font-size: 15px;
   }
   
-  .imageContainer {
-    margin-bottom: clamp(12px, 4vw, 16px);
+  .skill {
+    font-size: 13px;
+  }
+  
+  .moreSkills {
+    font-size: 13px;
+  }
+  
+  .overlayTitle {
+    font-size: 24px;
+  }
+  
+  .clickHint {
+    font-size: 14px;
   }
 }
