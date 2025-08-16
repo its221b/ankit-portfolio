@@ -1,21 +1,25 @@
 @import "../../vars.css";
 
 .container {
-  margin-top: clamp(40px, 8vw, 80px);
+  margin-top: clamp(25px, 5vw, 50px);
   color: var(--color-text);
   margin-left: clamp(5%, 10vw, 10%);
   margin-right: clamp(5%, 10vw, 10%);
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: clamp(40px, 8vw, 80px);
+  padding-bottom: clamp(30px, 6vw, 60px);
+  /* Cross-browser compatibility */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .sectionTitle {
   font-size: clamp(36px, 6vw, 56px);
   font-weight: 900;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(20px, 4vw, 35px);
   font-family: var(--font-roboto);
   background: linear-gradient(
     135deg,
@@ -43,23 +47,44 @@
 }
 
 .projectsContainer {
-  margin-top: clamp(20px, 4vw, 37px);
+  margin-top: clamp(10px, 2vw, 25px);
   width: 100%;
   overflow: visible;
   position: relative;
-  min-height: 520px; /* Ensure consistent height for better visual balance */
+  min-height: 520px;
+  padding: clamp(8px, 2vw, 15px) 0;
+  /* Cross-browser compatibility */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Ensure consistent spacing */
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .projects {
   display: flex;
   gap: clamp(20px, 4vw, 30px);
-  padding: 20px clamp(25px, 6vw, 40px);
+  padding: clamp(25px, 4vw, 35px) clamp(30px, 6vw, 50px);
   overflow-x: auto;
   overflow-y: visible;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  margin: 0 auto;
+  max-width: 100%;
+  /* Cross-browser compatibility */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Ensure consistent spacing across browsers */
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 .projects::-webkit-scrollbar {
@@ -91,32 +116,51 @@
 /* Responsive Design */
 @media screen and (min-width: 1400px) {
   .projects {
-    padding: 20px clamp(30px, 5vw, 50px);
+    padding: clamp(20px, 3vw, 30px) clamp(30px, 5vw, 45px);
+    gap: clamp(18px, 3vw, 28px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(15px, 2vw, 20px);
+    padding: clamp(10px, 2vw, 15px) 0;
   }
 }
 
 @media screen and (max-width: 1200px) {
   .projects {
-    gap: clamp(25px, 5vw, 35px);
-    padding: 20px clamp(25px, 6vw, 40px);
+    gap: clamp(16px, 3vw, 25px);
+    padding: clamp(18px, 3vw, 25px) clamp(20px, 5vw, 35px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(12px, 2vw, 18px);
+    padding: clamp(8px, 2vw, 12px) 0;
   }
 }
 
 @media screen and (max-width: 830px) {
   .container {
-    margin-top: clamp(30px, 6vw, 60px);
-    padding-bottom: clamp(60px, 10vw, 100px);
+    margin-top: clamp(20px, 4vw, 35px);
+    padding-bottom: clamp(40px, 6vw, 60px);
+  }
+  
+  .sectionTitle {
+    margin-bottom: clamp(18px, 3vw, 25px);
   }
   
   .projects {
-    gap: clamp(20px, 4vw, 30px);
-    margin-top: clamp(15px, 3vw, 25px);
-    padding: 20px clamp(20px, 5vw, 35px);
+    gap: clamp(15px, 3vw, 22px);
+    padding: clamp(15px, 3vw, 22px) clamp(18px, 4vw, 28px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(10px, 2vw, 15px);
+    padding: clamp(6px, 2vw, 10px) 0;
   }
   
   .projectsContainer::before,
   .projectsContainer::after {
-    width: clamp(30px, 6vw, 60px);
+    width: clamp(20px, 4vw, 40px);
   }
 }
 
@@ -124,7 +168,17 @@
 @media screen and (max-width: 767px) and (min-width: 600px) {
   .sectionTitle {
     font-size: clamp(28px, 6vw, 42px);
-    margin-bottom: 45px;
+    margin-bottom: clamp(15px, 3vw, 20px);
+  }
+  
+  .projects {
+    padding: clamp(12px, 3vw, 18px) clamp(15px, 4vw, 25px);
+    gap: clamp(12px, 3vw, 18px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(8px, 2vw, 12px);
+    padding: clamp(5px, 2vw, 8px) 0;
   }
 }
 
@@ -132,31 +186,45 @@
 @media screen and (max-width: 599px) and (min-width: 480px) {
   .sectionTitle {
     font-size: clamp(24px, 7vw, 36px);
-    margin-bottom: 40px;
+    margin-bottom: clamp(12px, 3vw, 18px);
+  }
+  
+  .projects {
+    padding: clamp(10px, 3vw, 15px) clamp(12px, 4vw, 20px);
+    gap: clamp(10px, 3vw, 15px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(6px, 2vw, 10px);
+    padding: clamp(4px, 2vw, 6px) 0;
   }
 }
 
 @media screen and (max-width: 480px) {
   .container {
-    margin-left: clamp(10px, 3vw, 20px);
-    margin-right: clamp(10px, 3vw, 20px);
-    padding-bottom: clamp(40px, 8vw, 80px);
-  }
-  
-  .projects {
-    gap: clamp(15px, 4vw, 25px);
-    margin-top: clamp(15px, 3vw, 25px);
-    padding: 15px clamp(15px, 4vw, 25px);
+    margin-left: clamp(6px, 2vw, 15px);
+    margin-right: clamp(6px, 2vw, 15px);
+    padding-bottom: clamp(25px, 5vw, 50px);
   }
   
   .sectionTitle {
     font-size: clamp(20px, 8vw, 32px);
-    margin-bottom: 35px;
+    margin-bottom: clamp(12px, 3vw, 18px);
+  }
+  
+  .projects {
+    gap: clamp(8px, 3vw, 15px);
+    padding: clamp(8px, 3vw, 15px) clamp(12px, 3vw, 20px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(5px, 2vw, 8px);
+    padding: clamp(3px, 2vw, 5px) 0;
   }
   
   .projectsContainer::before,
   .projectsContainer::after {
-    width: clamp(25px, 5vw, 40px);
+    width: clamp(15px, 3vw, 25px);
   }
 }
 
@@ -164,7 +232,17 @@
 @media screen and (max-width: 359px) {
   .sectionTitle {
     font-size: clamp(18px, 9vw, 28px);
-    margin-bottom: 30px;
+    margin-bottom: clamp(10px, 3vw, 15px);
+  }
+  
+  .projects {
+    padding: clamp(6px, 3vw, 12px) clamp(10px, 3vw, 15px);
+    gap: clamp(6px, 3vw, 12px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(4px, 2vw, 6px);
+    padding: clamp(2px, 2vw, 4px) 0;
   }
 }
 
@@ -172,6 +250,16 @@
 @media screen and (max-width: 319px) {
   .sectionTitle {
     font-size: clamp(16px, 10vw, 24px);
-    margin-bottom: 25px;
+    margin-bottom: clamp(8px, 3vw, 12px);
+  }
+  
+  .projects {
+    padding: clamp(4px, 3vw, 10px) clamp(8px, 3vw, 12px);
+    gap: clamp(4px, 3vw, 10px);
+  }
+  
+  .projectsContainer {
+    margin-top: clamp(3px, 2vw, 5px);
+    padding: clamp(1px, 2vw, 3px) 0;
   }
 }

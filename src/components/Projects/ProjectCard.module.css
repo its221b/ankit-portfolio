@@ -12,6 +12,7 @@
   transform: translateX(50px) rotateY(15deg);
   position: relative;
   z-index: 1;
+  margin: clamp(10px, 2vw, 20px) clamp(5px, 1vw, 10px);
 }
 
 .container.visible {
@@ -35,7 +36,7 @@
   height: 100%;
   background: rgba(25, 55, 109, 0.1);
   border-radius: 20px;
-  padding: 20px;
+  padding: clamp(18px, 4vw, 22px);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 
@@ -67,7 +68,7 @@
   height: 200px;
   border-radius: 15px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: clamp(18px, 4vw, 22px);
   transform: translateZ(20px);
 }
 
@@ -284,5 +285,57 @@
   .linkButton {
     width: 36px;
     height: 36px;
+  }
+}
+
+/* Responsive Design for Project Cards */
+@media screen and (max-width: 830px) {
+  .container {
+    margin: clamp(8px, 2vw, 16px) clamp(4px, 1vw, 8px);
+    min-width: 300px;
+    max-width: 380px;
+    height: 480px;
+  }
+  
+  .cardContent {
+    padding: clamp(16px, 4vw, 20px);
+  }
+  
+  .imageContainer {
+    margin-bottom: clamp(16px, 4vw, 20px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    margin: clamp(6px, 2vw, 14px) clamp(3px, 1vw, 6px);
+    min-width: 280px;
+    max-width: 360px;
+    height: 460px;
+  }
+  
+  .cardContent {
+    padding: clamp(14px, 4vw, 18px);
+  }
+  
+  .imageContainer {
+    margin-bottom: clamp(14px, 4vw, 18px);
+  }
+}
+
+@media screen and (max-width: 359px) {
+  .container {
+    margin: clamp(5px, 2vw, 12px) clamp(2px, 1vw, 5px);
+    min-width: 260px;
+    max-width: 340px;
+    height: 440px;
+  }
+  
+  .cardContent {
+    padding: clamp(12px, 4vw, 16px);
+  }
+  
+  .imageContainer {
+    margin-bottom: clamp(12px, 4vw, 16px);
   }
 }
