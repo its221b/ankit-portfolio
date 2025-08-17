@@ -9,32 +9,6 @@
   overflow: hidden;
 }
 
-.container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 80%, rgba(87, 108, 188, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(87, 108, 188, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  animation: backgroundFloat 20s ease-in-out infinite;
-}
-
-.container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 60% 40%, rgba(87, 108, 188, 0.05) 0%, transparent 40%),
-              radial-gradient(circle at 40% 60%, rgba(87, 108, 188, 0.05) 0%, transparent 40%);
-  pointer-events: none;
-  animation: backgroundFloat 25s ease-in-out infinite reverse;
-}
-
 /* Content wrapper */
 .content {
   max-width: 1200px;
@@ -120,19 +94,12 @@
   animation-delay: 1s;
 }
 
-
-
 .link:hover,
 .linkHovered {
   background: rgba(255, 255, 255, 0.12);
   border-color: var(--color-primary);
   transform: translateY(-4px) scale(1.02);
   box-shadow: 0 12px 35px rgba(87, 108, 188, 0.4);
-}
-
-.link:active {
-  transform: translateY(-2px) scale(0.98);
-  transition: all 0.1s ease;
 }
 
 /* Icon container */
@@ -279,24 +246,59 @@
   }
 }
 
-
-
-@keyframes backgroundFloat {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
+/* Mobile-specific animations and interactions */
+@media screen and (max-width: 767px) {
+  .heading {
+    animation: fadeInUp 0.6s ease-out;
   }
-  25% {
-    transform: translate(-10px, -10px) scale(1.05);
+  
+  .subtitle {
+    animation: fadeInUp 0.6s ease-out 0.1s both;
   }
-  50% {
-    transform: translate(10px, -5px) scale(0.95);
+  
+  .ctaText {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
   }
-  75% {
-    transform: translate(-5px, 10px) scale(1.02);
+  
+  .link {
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+  }
+  
+  .link:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  
+  .link:nth-child(3) {
+    animation-delay: 0.5s;
+  }
+  
+  /* Mobile touch feedback */
+  .link {
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    position: relative;
+  }
+  
+  .link:active {
+    transform: translateY(-2px) scale(0.98);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(87, 108, 188, 0.4);
+    transition: all 0.15s ease;
+  }
+  
+  .link:active .iconContainer {
+    background: var(--color-primary);
+    transform: scale(1.1);
+    transition: all 0.15s ease;
+  }
+  
+  .link:active .contactLink {
+    color: var(--color-primary);
+    transform: translateX(2px);
+    transition: all 0.15s ease;
   }
 }
-
-
 
 /* Responsive design */
 @media screen and (min-width: 768px) {
@@ -373,81 +375,30 @@
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .container {
-    background: linear-gradient(135deg, var(--color-dark) 0%, #000 100%);
-  }
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  .link,
-  .iconContainer,
-  .contactLink {
-    transition: none;
-  }
-  
-  .heading,
-  .subtitle,
-  .ctaText,
-  .link {
-    animation: none;
-  }
-  
-  .iconContainer {
-    animation: none;
-  }
-}
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-  .link {
-    border-width: 2px;
-  }
-  
-  .contactLink {
-    font-weight: 600;
-  }
-}
-
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
+  .link {
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
   .link:active {
     transform: translateY(-2px) scale(0.98);
     background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(87, 108, 188, 0.4);
+    transition: all 0.15s ease;
   }
   
-  .iconContainer:active {
-    transform: scale(1.1);
+  .link:active .iconContainer {
     background: var(--color-primary);
-  }
-}
-
-/* Enhanced focus states for accessibility */
-.link:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-  transform: translateY(-2px);
-}
-
-.contactLink:focus-visible {
-  color: var(--color-primary);
-}
-
-/* Print styles */
-@media print {
-  .container {
-    background: white;
-    color: black;
+    transform: scale(1.1);
+    transition: all 0.15s ease;
   }
   
-  .link {
-    border: 1px solid #ccc;
-    background: white;
-  }
-  
-  .contactLink {
-    color: black;
+  .link:active .contactLink {
+    color: var(--color-primary);
+    transform: translateX(2px);
+    transition: all 0.15s ease;
   }
 }
