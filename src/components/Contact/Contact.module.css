@@ -19,6 +19,20 @@
   background: radial-gradient(circle at 20% 80%, rgba(87, 108, 188, 0.1) 0%, transparent 50%),
               radial-gradient(circle at 80% 20%, rgba(87, 108, 188, 0.1) 0%, transparent 50%);
   pointer-events: none;
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 60% 40%, rgba(87, 108, 188, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 40% 60%, rgba(87, 108, 188, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+  animation: backgroundFloat 25s ease-in-out infinite reverse;
 }
 
 /* Content wrapper */
@@ -92,7 +106,7 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
   backdrop-filter: blur(10px);
   animation: fadeInUp 0.8s ease-out 0.6s both;
@@ -106,17 +120,23 @@
   animation-delay: 1s;
 }
 
+
+
 .link:hover,
 .linkHovered {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(87, 108, 188, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(87, 108, 188, 0.4);
+}
+
+.link:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: all 0.1s ease;
 }
 
 /* Icon container */
 .iconContainer {
-  position: relative;
   width: 48px;
   height: 48px;
   display: flex;
@@ -124,13 +144,27 @@
   justify-content: center;
   background: rgba(87, 108, 188, 0.2);
   border-radius: 50%;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: float 3s ease-in-out infinite;
+}
+
+.iconContainer:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.iconContainer:nth-child(2) {
+  animation-delay: 1s;
+}
+
+.iconContainer:nth-child(3) {
+  animation-delay: 2s;
 }
 
 .link:hover .iconContainer,
 .linkHovered .iconContainer {
   background: var(--color-primary);
-  transform: scale(1.1);
+  transform: scale(1.15);
+  animation: pulse 0.6s ease-in-out;
 }
 
 /* Icon styling */
@@ -138,11 +172,17 @@
   width: 24px;
   height: 24px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .iconLoaded {
   opacity: 1;
+  animation: iconBounce 0.6s ease-out;
+}
+
+.link:hover .icon,
+.linkHovered .icon {
+  transform: scale(1.1) rotate(-5deg);
 }
 
 /* Skeleton loader for icons */
@@ -161,13 +201,14 @@
   text-decoration: none;
   font-size: clamp(0.875rem, 2vw, 1.125rem);
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   flex: 1;
 }
 
 .link:hover .contactLink,
 .linkHovered .contactLink {
   color: var(--color-primary);
+  transform: translateX(4px);
 }
 
 /* Footer */
@@ -205,6 +246,58 @@
   }
 }
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.15);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes iconBounce {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+@keyframes backgroundFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-10px, -10px) scale(1.05);
+  }
+  50% {
+    transform: translate(10px, -5px) scale(0.95);
+  }
+  75% {
+    transform: translate(-5px, 10px) scale(1.02);
+  }
+}
+
+
+
 /* Responsive design */
 @media screen and (min-width: 768px) {
   .container {
@@ -229,6 +322,10 @@
   
   .link {
     padding: 1.25rem 2rem;
+  }
+  
+  .link:hover {
+    transform: translateY(-6px) scale(1.03);
   }
   
   .iconContainer {
@@ -297,6 +394,10 @@
   .link {
     animation: none;
   }
+  
+  .iconContainer {
+    animation: none;
+  }
 }
 
 /* High contrast mode */
@@ -308,6 +409,30 @@
   .contactLink {
     font-weight: 600;
   }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .link:active {
+    transform: translateY(-2px) scale(0.98);
+    background: rgba(255, 255, 255, 0.15);
+  }
+  
+  .iconContainer:active {
+    transform: scale(1.1);
+    background: var(--color-primary);
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  transform: translateY(-2px);
+}
+
+.contactLink:focus-visible {
+  color: var(--color-primary);
 }
 
 /* Print styles */
