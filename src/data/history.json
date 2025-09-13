@@ -1,18 +1,12 @@
 [
   {
-    "role": "Software Engineer",
-    "organisation": "Navyug Infosolutions Pvt. Ltd.",
-    "startDate": "July, 2021",
-    "endDate": "Nov, 2024",
+    "role": "Senior Software Engineer",
+    "organisation": "Doceree",
+    "startDate": "Sept, 2025",
+    "endDate": "Present",
     "experiences": [
-      "Developed and deployed 4+ production-grade web and mobile applications for enterprise and consumer markets using React.js and React Native.",
-      "Increased application performance by 30% via code splitting, lazy loading, and advanced rendering optimization.",
-      "Architected a Redux-based global state management system, reducing unnecessary re-renders by 60% and improving development velocity by 25%.",
-      "Integrated REST APIs with dynamic frontend modules, ensuring robust error handling, optimized network requests, and improved data rendering.",
-      "Created reusable UI component libraries, streamlining development across multiple projects and improving design consistency.",
-      "Established unit and integration testing pipelines using Jest and React Testing Library, improving code coverage by 45%."
     ],
-    "imageSrc": "history/navyug.png"
+    "imageSrc": "history/doceree.png"
   },
   {
     "role": "Senior App Developer",
@@ -27,5 +21,20 @@
       "Collaborated with clients to define feature priorities, align deliverables with product goals, and meet strict deadlines."
     ],
     "imageSrc": "history/truwix.png"
+  },
+  {
+    "role": "Software Engineer",
+    "organisation": "Navyug Infosolutions Pvt. Ltd.",
+    "startDate": "July, 2021",
+    "endDate": "Nov, 2024",
+    "experiences": [
+      "Developed and deployed 4+ production-grade web and mobile applications for enterprise and consumer markets using React.js and React Native.",
+      "Increased application performance by 30% via code splitting, lazy loading, and advanced rendering optimization.",
+      "Architected a Redux-based global state management system, reducing unnecessary re-renders by 60% and improving development velocity by 25%.",
+      "Integrated REST APIs with dynamic frontend modules, ensuring robust error handling, optimized network requests, and improved data rendering.",
+      "Created reusable UI component libraries, streamlining development across multiple projects and improving design consistency.",
+      "Established unit and integration testing pipelines using Jest and React Testing Library, improving code coverage by 45%."
+    ],
+    "imageSrc": "history/navyug.png"
   }
 ]
